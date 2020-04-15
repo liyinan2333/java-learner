@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: rmq-springboot
+  rabbitmq:
+      host: xxx.xxx.xxx.xxx
+      port: 5672
+      username: xxx
+      password: xxx
+      template:
+        exchange: spring.topic
