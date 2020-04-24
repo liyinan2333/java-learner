@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 /**
  * 统一的rmq消息出口
@@ -54,8 +55,14 @@ public class RMQSender {
      * @param text     报文
      */
     public void send(String exchange, String topic, String text) {
-        this.template.convertAndSend(topic, text);
-        LOGGER.info(ProtocolLoggerUtil.asSendLog(topic, text));
+        this.template.convertAndSend(exchange, topic, text);
+        if(StringUtils.isEmpty(topic)) {
+            // fanout
+            LOGGER.info(ProtocolLoggerUtil.asFanoutSendLog(exchange, text));
+        } else {
+            // topic
+            LOGGER.info(ProtocolLoggerUtil.asSendLog(topic, text));
+        }
     }
 
 }

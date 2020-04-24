@@ -16,18 +16,18 @@ public class TopicConsumer {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(TopicConsumer.class);
 
-    private String topic1 = "spring.";
-    private String topic2 = "spring.topic2";
+    private String topicA = "spring.topic.A";
+    private String topicB = "spring.topic.B";
 
     // 订阅单个topic:spring.message
-    @RabbitListener(queues = "spring.topic1")
+    @RabbitListener(queues = "spring.topic.A")
     public void process1(String message) {
-        LOGGER.info(ProtocolLoggerUtil.asReceiveLog(topic1, message));
+        LOGGER.info(ProtocolLoggerUtil.asReceiveLog(topicA, message));
     }
 
     // 由于该队列指向spring.#，所以订阅该队列相当于订阅spring.# topic
-    @RabbitListener(queues = "spring.topic2")
+    @RabbitListener(queues = "spring.topic.B")
     public void process2(String message) {
-        LOGGER.info(ProtocolLoggerUtil.asReceiveLog(topic2, message));
+        LOGGER.info(ProtocolLoggerUtil.asReceiveLog(topicB, message));
     }
 }

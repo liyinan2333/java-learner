@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
  */
 // 监听指定队列：spring
 @Component
-@RabbitListener(queues = "spring")
+@RabbitListener(queues = "spring.queue")
 public class SimpleQueueConsumer {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(SimpleQueueConsumer.class);

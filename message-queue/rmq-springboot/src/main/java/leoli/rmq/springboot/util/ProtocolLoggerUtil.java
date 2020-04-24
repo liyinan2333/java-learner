@@ -16,7 +16,17 @@ public class ProtocolLoggerUtil {
      * @return 组装好的日志文本
      */
     public static String asSendLog(String topic, String msg) {
-        return MessageFormat.format("Sended [topic={0}] -> {1}", topic, msg);
+        return MessageFormat.format("Sended [topic|queue={0}] -> {1}", topic, msg);
+    }
+
+    /**
+     * fanout发送日志
+     * @param exchange 交换器
+     * @param msg 报文
+     * @return 组装好的日志文本
+     */
+    public static String asFanoutSendLog(String exchange, String msg) {
+        return MessageFormat.format("Sended [exchange={0}] -> {1}", exchange, msg);
     }
 
     /**

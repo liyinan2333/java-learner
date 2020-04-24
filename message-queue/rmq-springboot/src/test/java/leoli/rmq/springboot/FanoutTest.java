@@ -21,8 +21,9 @@ public class FanoutTest {
     private FanoutProducer producer;
 
     @Test
-    public void sendText() {
+    public void sendText() throws InterruptedException {
         producer.send("spring.fanout", "This is a FANOUT message from spring.fanout!");
+        Thread.sleep(10*1000);
     }
 
 }

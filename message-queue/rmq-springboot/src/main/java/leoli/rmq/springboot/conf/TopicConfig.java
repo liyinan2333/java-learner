@@ -26,8 +26,8 @@ public class TopicConfig {
     /**
      * topic
      */
-    private final static String TOPIC_SPRING_MESSAGE = "spring.topic1";
-    private final static String TOPIC_SPRING_MESSAGES = "spring.topic2";
+    private final static String TOPIC_SPRING_MESSAGE = "spring.topic.A";
+    private final static String TOPIC_SPRING_MESSAGES = "spring.topic.B";
     private final static String TOPIC_SPRING_ALL = "spring.#";
 
     /**

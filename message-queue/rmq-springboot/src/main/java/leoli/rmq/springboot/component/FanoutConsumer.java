@@ -21,17 +21,17 @@ public class FanoutConsumer {
     private String topicB = "spring.fanout.B";
     private String topicC = "spring.fanout.C";
 
-    @RabbitListener(queues = "fanout.A")
+    @RabbitListener(queues = "spring.fanout.A")
     public void processA(String text) {
         LOGGER.info(ProtocolLoggerUtil.asReceiveLog(topicA, text));
     }
 
-    @RabbitListener(queues = "fanout.B")
+    @RabbitListener(queues = "spring.fanout.B")
     public void processB(String text) {
         LOGGER.info(ProtocolLoggerUtil.asReceiveLog(topicB, text));
     }
 
-    @RabbitListener(queues = "fanout.C")
+    @RabbitListener(queues = "spring.fanout.C")
     public void processC(String text) {
         LOGGER.info(ProtocolLoggerUtil.asReceiveLog(topicC, text));
     }

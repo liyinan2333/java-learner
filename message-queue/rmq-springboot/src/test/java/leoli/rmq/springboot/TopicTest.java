@@ -21,8 +21,8 @@ public class TopicTest {
 
     @Test
     public void sendText() {
-        producer.send("spring.topic1", "TOPIC_MESSAGE_1");
-        producer.send( "spring.topic2", "TOPIC_MESSAGE_2");
+        producer.send("spring.topic.A", "TOPIC_MESSAGE_A");
+        producer.send( "spring.topic.B", "TOPIC_MESSAGE_B");
     }
 
 }
