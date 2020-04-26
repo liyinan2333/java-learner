@@ -4,6 +4,9 @@ import org.junit.Test;
 
 /**
  * 单例(饿汉)模式测试
+ *
+ * @author leoli
+ * @date 2020/4/26
  */
 public class SingletonTest {
 
