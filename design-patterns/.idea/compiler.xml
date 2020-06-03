@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="05-builder-pattern" />
         <module name="02-factory-method-pattern" />
         <module name="01-singleton-pattern" />
         <module name="04-template-method-pattern" />
