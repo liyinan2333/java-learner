@@ -12,6 +12,7 @@
         <module>01-singleton-pattern</module>
         <module>02-factory-method-pattern</module>
         <module>03-abstract-factory-pattern</module>
+        <module>04-template-method-pattern</module>
     </modules>
 
     <properties>
