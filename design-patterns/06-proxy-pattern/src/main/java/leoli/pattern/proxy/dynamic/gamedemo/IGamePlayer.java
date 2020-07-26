@@ -1,7 +1,7 @@
-package leoli.pattern.proxy.mandatory;
+package leoli.pattern.proxy.dynamic.gamedemo;
 
 /**
- * 强制代理的玩家接口
+ * 动态代理的玩家接口
  */
 public interface IGamePlayer {
 
@@ -13,8 +13,5 @@ public interface IGamePlayer {
 
     // 升级
     public void upgrade();
-
-    // 每个人都可以找一下自己的代理
-    public IGamePlayer getProxy();
 
 }
