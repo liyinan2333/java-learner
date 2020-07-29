@@ -15,6 +15,7 @@
         <module>04-template-method-pattern</module>
         <module>05-builder-pattern</module>
         <module>06-proxy-pattern</module>
+        <module>07-prototype-pattern</module>
     </modules>
 
     <properties>
