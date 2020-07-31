@@ -14,6 +14,7 @@
         <module name="07-prototype-pattern" />
         <module name="02-factory-method-pattern" />
         <module name="05-builder-pattern" />
+        <module name="08-mediator-pattern" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="14" />

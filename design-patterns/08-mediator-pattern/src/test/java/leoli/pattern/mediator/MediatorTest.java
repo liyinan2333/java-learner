@@ -1,0 +1,31 @@
+package leoli.pattern.mediator;
+
+import org.junit.Test;
+
+/**
+ * 中介者模式测试类
+ *
+ * @author leoli
+ * @date 2020/7/31
+ */
+public class MediatorTest {
+
+    @Test
+    public void mediatorTest() {
+        AbstractMediator mediator = new Mediator();
+        // 采购人员采购电脑
+        System.out.println("----------------采购人员采购电脑-------------");
+        Purchase purchase = new Purchase(mediator);
+        purchase.buyIBMComputer(100);
+        // 销售人员销售电脑
+        System.out.println("\n----------------销售人员销售电脑--------------");
+        Sale sale = new Sale(mediator);
+        sale.sellIBMComputer(1);
+        // 库房管理人员管理库存
+          System.out.println("\n----------------库房管理人员清库处理-----------");
+        Stock stock = new Stock(mediator);
+        stock.clearStock();
+    }
+
+
+}
