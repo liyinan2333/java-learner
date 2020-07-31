@@ -17,6 +17,7 @@
         <module>06-proxy-pattern</module>
         <module>07-prototype-pattern</module>
         <module>08-mediator-pattern</module>
+        <module>09-command-pattern</module>
     </modules>
 
     <properties>
@@ -33,5 +34,21 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <!--指定Java版本-->
+                    <source>14</source>
+                    <target>14</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

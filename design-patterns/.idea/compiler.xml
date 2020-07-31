@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="03-abstract-factory-pattern" />
         <module name="06-proxy-pattern" />
+        <module name="09-command-pattern" />
         <module name="01-singleton-pattern" />
         <module name="04-template-method-pattern" />
         <module name="07-prototype-pattern" />
