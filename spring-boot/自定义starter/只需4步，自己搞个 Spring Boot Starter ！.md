@@ -68,6 +68,7 @@ ResourceConditions 资源条件注解|@ConditionalOnResource|有指定资源才�
 Web Application Conditionsweb条件注解|@ConditionalOnWebApplication|是web才加载
 -|@ConditionalOnNotWebApplication|不是web才加载
 SpEL Expression Conditions|@ConditionalOnExpression|符合SpEL 表达式才加载
+
 本次我们就选用@ConditionalOnProperty。即配置文件中有aspectLog.enable=true，才加载我们的配置类。下面开始写自动配置类
 ##### 定义AspectLog注解，该注解用于标注需要打印执行时间的方法。
 ```java
