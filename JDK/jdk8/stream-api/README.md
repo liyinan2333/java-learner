@@ -343,3 +343,5 @@ try(final Stream<Integer> integerStream = personList.stream().map(Person::getAge
 }
 ```
 最好将流的操作放到try-with-resources，本章前面内容为了方便，没有放到try-with-resources中。
+
+**[原文链接](https://www.cnblogs.com/wuhenzhidu/p/10740091.html)**
