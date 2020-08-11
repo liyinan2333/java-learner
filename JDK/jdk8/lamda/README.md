@@ -1,4 +1,4 @@
-###Java8新特性之一：Lambda表达式
+### Java8新特性之一：Lambda表达式
 Java8是自java5之后最重大的一次更新，它给JAVA语言带来了很多新的特性（包括编译器、类库、工具类、JVM等），其中最重要的升级是它给我们带来了Lambda表达式和Stream API。
 #### 1、什么是Lambda表达式？
 Lambda是一个匿名函数，可以理解为是一段可以传递的代码，可以将代码像传递参数、传递数据一样进行传输。使用Lambda表达式，可以写出更加紧凑、更加简洁、更加灵活的代码。
@@ -134,13 +134,13 @@ Lambda表达式语法分在3个部分：
 3. 右边大括号内对函数接口抽象方法的实现。
 
 Lambda表达式的在具体场景下可以有简略写法。
-### 5.2&nbsp;语法格式一：无参数，无返回值
+##### 5.2&nbsp;语法格式一：无参数，无返回值
 ```java
 Runnable runnable = () -> {System.out.println("Hello World");} 
 Runnable runnable = () -> System.out.println("Hello World");  // 简写形式
 ```
 此时，如果右边的代码简单，只有一行代码时，{}可以省略。
-### 5.2&nbsp;语法格式二：有一个参数，无返回值
+##### 5.2&nbsp;语法格式二：有一个参数，无返回值
 ```java
 public class CalculatorTest {
 
@@ -156,13 +156,13 @@ public class CalculatorTest {
 }
 ```
 此时，左边的()可以省略。
-### 5.3&nbsp;语法格式三：Lambda体内只有一条语句，且有返回值，return可省略
+##### 5.3&nbsp;语法格式三：Lambda体内只有一条语句，且有返回值，return可省略
 ```java
 public Integer subtr(Integer v1,Integer v2) {
     return operator(v1,v2,(x,y) -> x - y);
 }
 ```
-### 5.4&nbsp;语法格式四：有两个以上参数，且Lambda体中有多条语句
+##### 5.4&nbsp;语法格式四：有两个以上参数，且Lambda体中有多条语句
 ```java
 public Integer add(Integer v1,Integer v2) {
         return operator(v1,v2,(x,y) -> {
@@ -171,7 +171,7 @@ public Integer add(Integer v1,Integer v2) {
         });
     }
 ```
-### 5.5&nbsp;语法格式五：Lambda表达式的数据类型可以省略不写
+##### 5.5&nbsp;语法格式五：Lambda表达式的数据类型可以省略不写
 
 JVM编译器通过上下文可以推断出数据类型，但要注意的是，当多个参数时，要么都写，要么都不写，不能有的写，有的不写：
 ```java
