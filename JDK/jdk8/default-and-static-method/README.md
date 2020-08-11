@@ -133,7 +133,7 @@ birds can fly...
 fishes can swim......
 ```
 
-#### 3、接口静态方法的&ldquo;类优先&rdquo;原则
+#### 3、接口默认方法的&ldquo;类优先&rdquo;原则
 如果一个接口实现类提供了具体的实现，那么接口中具有相同名称和参数的默认方法会被忽略，如改写之前的Bird类：
 ```java
 public class Bird implements Animal {
