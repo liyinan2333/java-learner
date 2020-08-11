@@ -1,6 +1,5 @@
-Java8新特性之五：Optional
+### Java8新特性之五：Optional
 NullPointerException相信每个JAVA程序员都不陌生，是JAVA应用程序中最常见的异常。之前，Google Guava项目曾提出用Optional类来包装对象从而解决NullPointerException。受此影响，JDK8的类中也引入了Optional类，在新版的SpringData Jpa和Spring Redis Data中都已实现了对该方法的支持。
-
 #### 1、Optional类
 ```java
 /**
@@ -92,14 +91,14 @@ Hey Tom!
 
 下面看一下例子中使用到的几个方法的源码：
 
-**1）、of**
+**1）of**
 ```java
 public static <T> Optional<T> of(T value) {
     return new Optional<>(value);
 }
 ```
 
-**2）、isPresent**
+**2）isPresent**
 
 ```java
 public boolean isPresent() {
@@ -107,14 +106,14 @@ public boolean isPresent() {
 }
 ```
 
-**3）、orElseGet**
+**3）orElseGet**
 ```java
 public T orElseGet(Supplier<? extends T> other) {
     return value != null ? value : other.get();
 }
 ```
 
-**4）、orElse**
+**4）orElse**
 ```java
 public T orElse(T other) {
     return value != null ? value : other;
