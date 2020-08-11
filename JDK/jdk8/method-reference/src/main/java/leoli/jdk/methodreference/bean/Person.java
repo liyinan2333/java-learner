@@ -4,7 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-
+/**
+ * @author leoli
+ * @date 2020/8/11
+ */
 @Data
 @EqualsAndHashCode
 @AllArgsConstructor
