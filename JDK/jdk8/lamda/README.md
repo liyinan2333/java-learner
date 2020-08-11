@@ -318,3 +318,5 @@ public interface BiFunction<T, U, R> {
 }
 ```
 其他的类似，这些函数式接口都在java.util.function包下，读者可去这个包下去查询。
+
+**[原文链接](https://www.cnblogs.com/wuhenzhidu/p/lambda.html)**
