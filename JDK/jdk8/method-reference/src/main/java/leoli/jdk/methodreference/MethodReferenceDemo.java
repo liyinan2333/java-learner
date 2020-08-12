@@ -8,6 +8,12 @@ import java.util.List;
 import java.util.function.BiPredicate;
 import java.util.function.Supplier;
 
+/**
+ * 方法引用演示
+ *
+ * @author leoli
+ * @date 2020/8/11
+ */
 public class MethodReferenceDemo {
 
     public static void main(String[] args) {
@@ -29,7 +35,7 @@ public class MethodReferenceDemo {
         System.out.println("---------------------------------------------------------------------");
 
         System.out.println("实例方法引用->");
-        Person person = new Person("欧阳峰",32);
+        Person person = new Person("欧阳峰", 32);
         Supplier<String> supplier = () -> person.getName();
         System.out.println("Lambda表达式输出结果：" + supplier.get());
 
@@ -39,8 +45,8 @@ public class MethodReferenceDemo {
 
 
         System.out.println("对象方法引用->");
-        BiPredicate<String,String> bp = (x, y) -> x.equals(y);
-        BiPredicate<String,String> bp1 = String::equals;
+        BiPredicate<String, String> bp = (x, y) -> x.equals(y);
+        BiPredicate<String, String> bp1 = String::equals;
         boolean test = bp1.test("xy", "xx");
         System.out.println(test);
         System.out.println("---------------------------------------------------------------------");
