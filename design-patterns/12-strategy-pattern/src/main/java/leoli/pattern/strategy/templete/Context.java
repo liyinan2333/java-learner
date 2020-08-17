@@ -1,4 +1,4 @@
-package leoli.pattern.strategy;
+package leoli.pattern.strategy.templete;
 
 import leoli.pattern.strategy.templete.strategy.Strategy;
 

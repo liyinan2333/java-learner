@@ -1,4 +1,4 @@
-package leoli.pattern.strategy;
+package leoli.pattern.strategy.templete;
 
 import leoli.pattern.strategy.templete.strategy.ConcreteStrategy1;
 import leoli.pattern.strategy.templete.strategy.Strategy;
@@ -10,7 +10,7 @@ import org.junit.Test;
  * @author leoli
  * @date 2020/8/12
  */
-public class StrategyTest {
+public class StrategyTempleteTest {
 
     @Test
     public void testStrategy() {
