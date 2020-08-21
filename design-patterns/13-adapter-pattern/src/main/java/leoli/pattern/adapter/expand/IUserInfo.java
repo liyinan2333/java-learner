@@ -1,8 +1,8 @@
-package leoli.pattern.adapter.demo;
+package leoli.pattern.adapter.expand;
 
 /**
  * @author leoli
- * @date 2020/8/17
+ * @date 2020/8/21
  */
 public interface IUserInfo {
     //获得用户姓名

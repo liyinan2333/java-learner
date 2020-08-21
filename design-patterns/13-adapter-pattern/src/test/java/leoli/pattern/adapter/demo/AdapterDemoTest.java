@@ -1,5 +1,6 @@
 package leoli.pattern.adapter.demo;
 
+import leoli.pattern.adapter.expand.IUserInfo;
 import org.junit.Test;
 
 /**

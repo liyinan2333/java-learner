@@ -1,5 +1,7 @@
 package leoli.pattern.adapter.demo;
 
+import leoli.pattern.adapter.expand.IUserInfo;
+
 /**
  * @author leoli
  * @date 2020/8/17
