@@ -18,6 +18,13 @@
         <module>07-prototype-pattern</module>
         <module>08-mediator-pattern</module>
         <module>09-command-pattern</module>
+        <module>10-chain-of-responsibility</module>
+        <module>11-decorator-pattern</module>
+        <module>12-strategy-pattern</module>
+        <module>13-adapter-pattern</module>
+        <module>14-iterator-pattern</module>
+        <module>15-composite-pattern</module>
+        <module>16-observer-pattern</module>
     </modules>
 
     <properties>
