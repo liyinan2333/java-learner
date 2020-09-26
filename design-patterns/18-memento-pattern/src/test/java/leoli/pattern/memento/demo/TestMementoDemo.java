@@ -1,8 +1,14 @@
-package leoli.pattern.memento;
+package leoli.pattern.memento.demo;
 
 import junit.framework.TestCase;
 import org.junit.Test;
 
+/**
+ * 备忘录模式Demo-演示
+ *
+ * @author leoli
+ * @date 2020/9/25
+ */
 public class TestMementoDemo extends TestCase {
 
     @Test

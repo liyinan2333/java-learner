@@ -1,4 +1,4 @@
-package leoli.pattern.memento;
+package leoli.pattern.memento.demo;
 
 /**
  * 备忘录

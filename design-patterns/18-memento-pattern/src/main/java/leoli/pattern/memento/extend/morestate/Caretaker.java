@@ -1,4 +1,4 @@
-package leoli.pattern.memento.demo;
+package leoli.pattern.memento.extend.morestate;
 
 /**
  * 备忘录管理者
