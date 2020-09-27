@@ -25,7 +25,10 @@
         <module>14-iterator-pattern</module>
         <module>15-composite-pattern</module>
         <module>16-observer-pattern</module>
+        <module>17-facade-pttern</module>
+        <module>18-memento-pattern</module>
         <module>20-state-pattern</module>
+        <module>21-interpreter-pattern</module>
     </modules>
 
     <properties>
