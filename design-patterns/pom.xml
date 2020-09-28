@@ -30,6 +30,7 @@
         <module>20-state-pattern</module>
         <module>21-interpreter-pattern</module>
         <module>22-flyweight-pattern</module>
+        <module>23-bridge-pattern</module>
     </modules>
 
     <properties>
