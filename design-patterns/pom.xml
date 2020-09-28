@@ -29,6 +29,7 @@
         <module>18-memento-pattern</module>
         <module>20-state-pattern</module>
         <module>21-interpreter-pattern</module>
+        <module>22-flyweight-pattern</module>
     </modules>
 
     <properties>
