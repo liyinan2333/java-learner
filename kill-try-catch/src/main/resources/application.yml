@@ -10,7 +10,7 @@ spring:
     url: jdbc:mysql://db.leoli.wiki:3306/exception_handler
     hikari:
       username: pbc
-      password: A12lei345
+      password:
   jpa:
     hibernate:
       # 第一次建表create  后面用update，要不然每次重启都会新建表
