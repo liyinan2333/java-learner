@@ -6,7 +6,7 @@ import leoli.killtrycatch._exception.BaseException;
  * @author leoli
  * @date 2020/10/12
  */
-public interface Assert {
+public interface  Assert {
 
     /**
      * 创建异常
