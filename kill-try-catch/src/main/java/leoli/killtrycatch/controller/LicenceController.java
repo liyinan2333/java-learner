@@ -18,7 +18,7 @@ public class LicenceController {
 
     @GetMapping("/{id}")
     public Licence get(@PathVariable String id) {
-        Licence licence = service.get(null);
+        Licence licence = service.get(id);
         return licence;
     }
 
