@@ -28,12 +28,12 @@ public class RMQSender {
      * 注意：
      * 实际上是向队列发送消息，这里传入exchange(已配置化)和topic，用来通过绑定关系定位队列
      *
-     * @param topic 队列名或topic
+     * @param queue
      * @param text  报文
      */
-    public void send(String topic, String text) {
-        this.template.convertAndSend(topic, text);
-        LOGGER.info(ProtocolLoggerUtil.asSendLog(topic, text));
+    public void send(String queue, String text) {
+        this.template.convertAndSend(queue, text);
+        LOGGER.info(ProtocolLoggerUtil.asSendLog(queue, text));
     }
 
     /**
@@ -56,7 +56,7 @@ public class RMQSender {
      */
     public void send(String exchange, String topic, String text) {
         this.template.convertAndSend(exchange, topic, text);
-        if(StringUtils.isEmpty(topic)) {
+        if (StringUtils.isEmpty(topic)) {
             // fanout
             LOGGER.info(ProtocolLoggerUtil.asFanoutSendLog(exchange, text));
         } else {

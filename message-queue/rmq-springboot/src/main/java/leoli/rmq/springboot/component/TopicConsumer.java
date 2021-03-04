@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * topic接收消息接口
+ *
  * @author leoli
  * @date 2020/4/14
  */
@@ -16,18 +17,18 @@ public class TopicConsumer {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(TopicConsumer.class);
 
-    private String topicA = "spring.topic.A";
-    private String topicB = "spring.topic.B";
+    private static final String queueA = "spring.topic.queue.a";
+    private static final String queueB = "spring.topic.queue.all";
 
-    // 订阅单个topic:spring.message
-    @RabbitListener(queues = "spring.topic.A")
+    // 订阅单个queue. spring.topic.a队列 对应 spring交换机->topic.a
+    @RabbitListener(queues = {queueA})
     public void process1(String message) {
-        LOGGER.info(ProtocolLoggerUtil.asReceiveLog(topicA, message));
+        LOGGER.info(ProtocolLoggerUtil.asReceiveLog(queueA, message));
     }
 
     // 由于该队列指向spring.#，所以订阅该队列相当于订阅spring.# topic
-    @RabbitListener(queues = "spring.topic.B")
+    @RabbitListener(queues = {queueB})
     public void process2(String message) {
-        LOGGER.info(ProtocolLoggerUtil.asReceiveLog(topicB, message));
+        LOGGER.info(ProtocolLoggerUtil.asReceiveLog(queueB, message));
     }
 }

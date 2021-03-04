@@ -9,6 +9,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * 测试topic
+ *
  * @author leoli
  * @date 2020/4/14
  */
@@ -21,8 +22,10 @@ public class TopicTest {
 
     @Test
     public void sendText() {
-        producer.send("spring.topic.A", "TOPIC_MESSAGE_A");
-        producer.send( "spring.topic.B", "TOPIC_MESSAGE_B");
+        // 直接向队列中塞消息
+        producer.send("spring.topic.a", "TOPIC_MESSAGE_A");
+        // 通过exchange和topic(routingKey)找到对应的队列，由于队列spring.topic.all绑定了topic.#，所有topic.开头的消息都会塞到spring.topic.all队列中
+        producer.send("spring.topic", "topic.123", "TOPIC_MESSAGE_123");
     }
 
 }
