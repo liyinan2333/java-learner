@@ -7,4 +7,3 @@ spring:
     username: admin
     password: 123456
     virtual-host: vhost
-    exchange: spring.topic

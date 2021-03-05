@@ -24,7 +24,7 @@ public class RMQSender {
     private AmqpTemplate template;
 
     /**
-     * queue|topic发送文本
+     * queue发送文本
      * 注意：
      * 实际上是向队列发送消息，这里传入exchange(已配置化)和topic，用来通过绑定关系定位队列
      *
