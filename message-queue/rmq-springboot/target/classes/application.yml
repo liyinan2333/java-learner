@@ -1,10 +1,9 @@
+server:
+  port: 8080
 spring:
-  application:
-    name: rmq-springboot
   rabbitmq:
-      host: 180.76.114.178
-      port: 5672
-      username: leoli
-      password: Y@yd@jtc@10086
-      template:
-        exchange: spring.topic
+    host: 127.0.0.1
+    port: 5672
+    username: admin
+    password: 123456
+    virtual-host: vhost

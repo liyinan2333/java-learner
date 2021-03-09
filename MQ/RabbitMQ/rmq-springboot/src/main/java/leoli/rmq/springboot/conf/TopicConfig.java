@@ -26,9 +26,14 @@ public class TopicConfig {
     /**
      * topic
      */
-    private final static String TOPIC_SPRING_MESSAGE = "spring.topic.A";
-    private final static String TOPIC_SPRING_MESSAGES = "spring.topic.B";
-    private final static String TOPIC_SPRING_ALL = "spring.#";
+    private final static String TOPIC_QUEUE_A = "spring.topic.queue.a";
+    private final static String TOPIC_QUEUE_ALL = "spring.topic.queue.all";
+
+    /**
+     * topic/routingKey
+     */
+    private final static String TOPIC_A = "topic.a";
+    private final static String TOPIC_ALL = "topic.#";
 
     /**
      * 创建队列
@@ -36,17 +41,17 @@ public class TopicConfig {
      * @return 方法同名队列Bean
      */
     @Bean
-    public Queue queueMessage() {
-        return new Queue(TOPIC_SPRING_MESSAGE);
+    public Queue queueA() {
+        return new Queue(TOPIC_QUEUE_A);
     }
 
     @Bean
-    public Queue queueMessages() {
-        return new Queue(TOPIC_SPRING_MESSAGES);
+    public Queue queueAll() {
+        return new Queue(TOPIC_QUEUE_ALL);
     }
 
     /**
-     * 将队列绑定到Topic交换器
+     * 创建topic交换器
      *
      * @return 方法同名交换器Bean
      */
@@ -58,13 +63,13 @@ public class TopicConfig {
     /**
      * 将队列绑定到Topic交换器，匹配单个topic
      *
-     * @param queueMessage 同名队列{@link Bean}
-     * @param exchange     交换器
+     * @param queueA   同名队列{@link Bean}
+     * @param exchange 交换器
      * @return
      */
     @Bean
-    public Binding bindingExchangeMessage(Queue queueMessage, TopicExchange exchange) {
-        return BindingBuilder.bind(queueMessage).to(exchange).with(TOPIC_SPRING_MESSAGE);
+    public Binding bindingExchangeMessage(Queue queueA, TopicExchange exchange) {
+        return BindingBuilder.bind(queueA).to(exchange).with(TOPIC_A);
     }
 
     /**
@@ -74,12 +79,12 @@ public class TopicConfig {
      * 这里将queueMessages这个队列绑定到了 spring.#这个topic和 springExchange这个交换器,
      * 订阅时指定订阅queueMessages这个队列即可。
      *
-     * @param queueMessages 同名队列{@link Bean}
-     * @param exchange      交换器
+     * @param queueAll 同名队列{@link Bean}
+     * @param exchange 交换器
      * @return 绑定关系
      */
     @Bean
-    public Binding bindingExchangeMessages(Queue queueMessages, TopicExchange exchange) {
-        return BindingBuilder.bind(queueMessages).to(exchange).with(TOPIC_SPRING_ALL);
+    public Binding bindingExchangeMessages(Queue queueAll, TopicExchange exchange) {
+        return BindingBuilder.bind(queueAll).to(exchange).with(TOPIC_ALL);
     }
 }
