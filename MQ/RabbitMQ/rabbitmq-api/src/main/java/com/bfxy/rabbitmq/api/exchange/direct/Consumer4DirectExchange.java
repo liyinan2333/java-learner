@@ -11,12 +11,14 @@ public class Consumer4DirectExchange {
 	public static void main(String[] args) throws Exception {
 		
 		
-        ConnectionFactory connectionFactory = new ConnectionFactory() ;  
-        
-        connectionFactory.setHost("192.168.11.76");
+        ConnectionFactory connectionFactory = new ConnectionFactory() ;
+        connectionFactory.setHost("127.0.0.1");
         connectionFactory.setPort(5672);
-		connectionFactory.setVirtualHost("/");
-		
+        connectionFactory.setVirtualHost("vhost");
+        connectionFactory.setUsername("admin");
+        connectionFactory.setPassword("123456");
+
+        // 自动重连
         connectionFactory.setAutomaticRecoveryEnabled(true);
         connectionFactory.setNetworkRecoveryInterval(3000);
         Connection connection = connectionFactory.newConnection();
@@ -25,7 +27,8 @@ public class Consumer4DirectExchange {
 		//4 声明
 		String exchangeName = "test_direct_exchange";
 		String exchangeType = "direct";
-		String queueName = "test_direct_queue";
+        String queueName = "test.direct";
+//		String queueName = "test_direct_queue";
 		String routingKey = "test.direct";
 		
 		//表示声明了一个交换机
