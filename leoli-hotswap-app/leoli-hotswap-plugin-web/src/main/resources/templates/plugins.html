@@ -1,0 +1,37 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Plutin list</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <th>插件名称</th>
+        <th>版本</th>
+        <th>启用</th>
+    </tr>
+    <tr>
+        <td>统计方法调用次数</td>
+        <td></td>
+        <td>
+            <input type="checkbox" onchange="active(this,1)" value="">
+        </td>
+    </tr>
+</table>
+</body>
+<script type="text/javascript">
+    function active(checkBox, id) {
+        var check = $(checkBox).prop('checked');
+        if (check) {
+            $.get("/plugin/active?id=" + id, function (data, status) {
+                alert(data);
+            });
+        } else {
+            $.get("/plugin/disable?id=" + id, function (data, status) {
+                alert(data);
+            });
+        }
+    }
+</script>
+</html>

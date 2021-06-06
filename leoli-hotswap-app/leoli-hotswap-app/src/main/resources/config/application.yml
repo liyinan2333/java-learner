@@ -1,0 +1,6 @@
+server:
+  port: 8080
+
+logging:
+  file:
+    name: ../logs/hotswap-debug.log
