@@ -14,5 +14,6 @@ public class PluginConfig {
     private String id;
     private String jarRemoteUrl;
     private String name;
+    private boolean enabled;
 
 }

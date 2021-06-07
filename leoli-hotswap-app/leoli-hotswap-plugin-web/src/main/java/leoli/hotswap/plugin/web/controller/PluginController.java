@@ -26,7 +26,7 @@ public class PluginController {
     private DefaultPluginFactory pluginFactory;
 
     @RequestMapping(value = "list")
-    public String getHavePlugins(HttpServletRequest request, HttpServletResponse response) {
+    public String getHavePlugins(HttpServletRequest request) {
         LOGGER.info("Web call: /plugin/list.");
         Collection list = null;
         try {

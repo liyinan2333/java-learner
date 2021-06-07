@@ -114,7 +114,7 @@ public class DefaultPluginFactory implements ApplicationContextAware {
             return adviceCache.get(config.getClassName());
         }
         // 获取本地待加载的jar插件包路径
-        URL targetUrl = new URL(config.getJarRemoteUrl());
+        URL targetUrl = new URL("file:/" + config.getJarRemoteUrl());
         // 获取当前正在运行的项目,加载了哪些jar包
         URLClassLoader loader = (URLClassLoader) getClass().getClassLoader();
         boolean isLoader = false;
@@ -146,8 +146,15 @@ public class DefaultPluginFactory implements ApplicationContextAware {
         String configJson = FileUtil.readUtf8String(file);
         Plugins pluginConfigs = GSON.fromJson(configJson, Plugins.class);
         for (PluginConfig pluginConfig : pluginConfigs.getConfigs()) {
+            // 添加缓存
             if (configs.get(pluginConfig.getId()) == null) {
                 configs.put(pluginConfig.getId(), pluginConfig);
+            }
+            // 设置默认状态
+            if(pluginConfig.isEnabled()) {
+                activePlugin(pluginConfig.getId());
+            } else {
+                disablePlugin(pluginConfig.getId());
             }
         }
         return configs.values();

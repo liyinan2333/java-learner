@@ -1,11 +1,12 @@
 package leoli.hotswap.plugin;
 
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.aop.MethodBeforeAdvice;
 import org.springframework.stereotype.Component;
 
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -14,25 +15,27 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author leoli
  * @date 2021/06/05
  */
+@Aspect
 @Component
-public class CountTimesPlugin implements MethodBeforeAdvice {
+public class CountTimesPlugin {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CountTimesPlugin.class);
     private Map<String, AtomicInteger> countMap = new HashMap<>();
 
-    private int count;
-
-    protected void count(Method method) {
-        if(countMap.containsKey(method.getDeclaringClass().getName() + "." + method.getName()) +) {
-            count++;
+    protected int count(String fullMethodName) {
+        if (countMap.containsKey(fullMethodName)) {
+            AtomicInteger atomicInteger = countMap.get(fullMethodName);
+            return atomicInteger.incrementAndGet();
+        } else {
+            AtomicInteger atomicInteger = new AtomicInteger();
+            countMap.put(fullMethodName, atomicInteger);
+            return atomicInteger.incrementAndGet();
         }
     }
 
-    @Override
-    public void before(Method method, Object[] objects, Object o) {
-
-        count(method);
-        LOGGER.info("The method {}() invoked times {}.", method.getName(), count);
-
+    @Before(value = "execution(* leoli.hotswap..*.*(..))")
+    public void beforeAdvice(JoinPoint joinPoint) {
+        String fullMethodName = joinPoint.getSignature().getClass().getName() + "#" + joinPoint.getSignature().toLongString();
+        LOGGER.info("Method [{}] call {} times", fullMethodName, count(fullMethodName));
     }
 }
