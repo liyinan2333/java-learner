@@ -2,8 +2,8 @@ package leoli.hotswap.plugin.web.spi;
 
 import cn.hutool.core.io.FileUtil;
 import com.google.gson.Gson;
-import leoli.hotswap.plugin.web.bean.PluginConfig;
-import leoli.hotswap.plugin.web.bean.Plugins;
+import com.google.gson.reflect.TypeToken;
+import leoli.hotswap.plugin.web.bean.Plugin;
 import org.aopalliance.aop.Advice;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,9 +19,10 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
-import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author leoli
@@ -35,7 +36,7 @@ public class DefaultPluginFactory implements ApplicationContextAware {
 
 
     private ApplicationContext applicationContext;
-    private Map<String, PluginConfig> configs = new HashMap<>();
+    private Map<String, Plugin> pluginCache = new HashMap<>();
     private Map<String, Advice> adviceCache = new HashMap<>();
     private Gson GSON = new Gson();
 
@@ -44,12 +45,12 @@ public class DefaultPluginFactory implements ApplicationContextAware {
      *
      * @param id
      */
-    public void activePlugin(String id) {
-        if (!configs.containsKey(id)) {
+    public void enablePlugin(String id) {
+        if (!pluginCache.containsKey(id)) {
             throw new RuntimeException(String.format("指定插件不存在 id=%s", id));
         }
-        PluginConfig config = configs.get(id);
-        config.setActive(true);
+        Plugin config = pluginCache.get(id);
+        config.setEnabled(true);
 
         // 把bean的定义全部遍历出来
         for (String name : applicationContext.getBeanDefinitionNames()) {
@@ -76,12 +77,12 @@ public class DefaultPluginFactory implements ApplicationContextAware {
     }
 
     public void disablePlugin(String id) {
-        if (!configs.containsKey(id)) {
+        if (!pluginCache.containsKey(id)) {
             throw new RuntimeException(String.format("指定插件不存在 id=%s", id));
         }
-        PluginConfig config = configs.get(id);
+        Plugin config = pluginCache.get(id);
         // 设置为不生效,页面也不显示
-        config.setActive(false);
+        config.setEnabled(false);
         for (String name : applicationContext.getBeanDefinitionNames()) {
             Object bean = applicationContext.getBean(name);
             if (bean instanceof Advised) {
@@ -109,7 +110,7 @@ public class DefaultPluginFactory implements ApplicationContextAware {
         return null;
     }
 
-    public Advice buildAdvice(PluginConfig config) throws Exception {
+    public Advice buildAdvice(Plugin config) throws Exception {
         if (adviceCache.containsKey(config.getClassName())) {
             return adviceCache.get(config.getClassName());
         }
@@ -141,23 +142,23 @@ public class DefaultPluginFactory implements ApplicationContextAware {
     }
 
 
-    public Collection<PluginConfig> flushConfigs() throws IOException {
+    public List<Plugin> flushConfigs() throws IOException {
         File file = new File(configPath);
         String configJson = FileUtil.readUtf8String(file);
-        Plugins pluginConfigs = GSON.fromJson(configJson, Plugins.class);
-        for (PluginConfig pluginConfig : pluginConfigs.getConfigs()) {
+        List<Plugin> fileConfigs = GSON.fromJson(configJson, new TypeToken<List<Plugin>>(){}.getType());
+        for (Plugin plugin : fileConfigs) {
             // 添加缓存
-            if (configs.get(pluginConfig.getId()) == null) {
-                configs.put(pluginConfig.getId(), pluginConfig);
-            }
-            // 设置默认状态
-            if(pluginConfig.isEnabled()) {
-                activePlugin(pluginConfig.getId());
-            } else {
-                disablePlugin(pluginConfig.getId());
+            if (pluginCache.get(plugin.getId()) == null) {
+                pluginCache.put(plugin.getId(), plugin);
+                // 设置默认状态
+                if (plugin.isEnabled()) {
+                    enablePlugin(plugin.getId());
+                } else {
+                    disablePlugin(plugin.getId());
+                }
             }
         }
-        return configs.values();
+        return pluginCache.values().stream().collect(Collectors.toList());
     }
 
     @Override

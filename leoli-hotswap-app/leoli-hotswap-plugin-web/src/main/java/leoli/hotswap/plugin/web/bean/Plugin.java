@@ -7,9 +7,8 @@ import lombok.Data;
  * @date 2021/06/05
  */
 @Data
-public class PluginConfig {
+public class Plugin {
 
-    private boolean active;
     private String className;
     private String id;
     private String jarRemoteUrl;

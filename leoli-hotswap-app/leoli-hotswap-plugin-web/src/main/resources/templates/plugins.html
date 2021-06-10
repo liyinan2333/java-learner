@@ -11,11 +11,11 @@
         <th>版本</th>
         <th>启用</th>
     </tr>
-    <tr>
-        <td>统计方法调用次数</td>
+    <tr th:each="plugin : ${plugins}">
+        <td th:text="${plugin.name}"></td>
         <td></td>
         <td>
-            <input type="checkbox" onchange="active(this,1)" value="">
+            <input type="checkbox" th:attr="onclick='javascript:active(this, \'' + ${plugin.id} + '\');'" value=""  th:checked="${plugin.enabled}">
         </td>
     </tr>
 </table>

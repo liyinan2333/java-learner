@@ -1,12 +1,9 @@
-{
-  "configs": [
-    {
-      "active": false,
-      "className": "leoli.hotswap.plugin.LogRestCallPlugin",
-      "id": "1",
-      "jarRemoteUrl": "../lib/leoli-hotswap-plugin-1.0-SNAPSHOT.jar",
-      "name": "统计方法调用次数",
-      "enabled": false
-    }
-  ]
-}
+[
+  {
+    "enabled": false,
+    "className": "leoli.hotswap.plugin.LogRestCallPlugin",
+    "id": "1",
+    "jarRemoteUrl": "../lib/leoli-hotswap-plugin-1.0-SNAPSHOT.jar",
+    "name": "统计方法调用次数"
+  }
+]
