@@ -27,7 +27,6 @@ public class PluginController {
 
     @RequestMapping(value = "list")
     public String getHavePlugins(HttpServletRequest request) {
-        LOGGER.info("Web call: /plugin/list.");
         Collection list = null;
         try {
             list = pluginFactory.flushConfigs();
@@ -40,7 +39,6 @@ public class PluginController {
 
     @RequestMapping(value = "active")
     public void activePlugin(HttpServletRequest request, HttpServletResponse response) {
-        LOGGER.info("Web call: /plugin/active.");
         pluginFactory.activePlugin(request.getParameter("id"));
         try {
             response.getWriter().append("active succeed!!");
@@ -51,7 +49,6 @@ public class PluginController {
 
     @RequestMapping("disable")
     public void disablePlugin(HttpServletRequest request, HttpServletResponse response) {
-        LOGGER.info("Web call: /plugin/disable.");
         pluginFactory.disablePlugin(request.getParameter("id"));
         try {
             response.getWriter().append("disable succeed!!");
