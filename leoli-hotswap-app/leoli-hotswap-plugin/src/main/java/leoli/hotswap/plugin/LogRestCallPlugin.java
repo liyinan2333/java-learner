@@ -7,9 +7,6 @@ import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * @author leoli
@@ -18,16 +15,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class LogRestCallPlugin implements MethodBeforeAdvice {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LogRestCallPlugin.class);
-    private Map<String, AtomicInteger> countMap = new HashMap<>();
 
     @Override
     public void before(Method method, Object[] objects, Object o) throws Throwable {
         RequestMapping methodAnno = method.getAnnotation(RequestMapping.class);
-        String[] methodUrl = methodAnno.value();
+        String methodUrl = (methodAnno != null && methodAnno.value() != null && methodAnno.value().length > 0) ? methodAnno.value()[0] : "";
         RequestMapping classAnno = method.getDeclaringClass().getAnnotation(RequestMapping.class);
         Assert.notNull(classAnno, "Cannot find annotation @RequestMapping.");
-        String[] classUrl = classAnno.value();
-        String url = (methodUrl[0] + "/" + classUrl[0]).replace("//", "/").replace("///", "/");
+        String classUrl = (classAnno != null && classAnno.value() != null && classAnno.value().length > 0) ? classAnno.value()[0] : "";
+        String url = (classUrl + "/" + methodUrl).replace("//", "/").replace("///", "/");
         LOGGER.info("Web call \"{}\" ", url);
     }
+
 }

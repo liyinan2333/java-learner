@@ -25,6 +25,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
+ * 核心插件管理工厂
+ *
  * @author leoli
  * @date 2021/06/05
  */
@@ -34,71 +36,81 @@ public class DefaultPluginFactory implements ApplicationContextAware {
     private static final String configPath = "../config/plugins.json";
     private static final Logger LOGGER = LoggerFactory.getLogger(DefaultPluginFactory.class);
 
-
     private ApplicationContext applicationContext;
     private Map<String, Plugin> pluginCache = new HashMap<>();
     private Map<String, Advice> adviceCache = new HashMap<>();
     private Gson GSON = new Gson();
 
     /**
-     * 激活插件
+     * 启用插件
      *
      * @param id
      */
     public void enablePlugin(String id) {
         if (!pluginCache.containsKey(id)) {
-            throw new RuntimeException(String.format("指定插件不存在 id=%s", id));
+            throw new RuntimeException(String.format("Plugin id [%s] not found.", id));
         }
         Plugin config = pluginCache.get(id);
         config.setEnabled(true);
 
-        // 把bean的定义全部遍历出来
+        // 所有被该切入点增强的Bean都需要addAdvice()
         for (String name : applicationContext.getBeanDefinitionNames()) {
             Object bean = applicationContext.getBean(name);
             if (bean == this) {
                 continue;
             }
+            // Bean被AOP代理规则匹配增强后都会实现Advised接口
             if (!(bean instanceof Advised)) {
                 continue;
             }
+            // 从Bean的Advice列表中找到Plugin对应的Advice，能找到说明本来就是增强了的
             if (findAdvice((Advised) bean, config.getClassName()) != null) {
                 continue;
             }
-            // 业务类的方法
-            Advice advice = null;
             try {
-                advice = buildAdvice(config);
+                Advice advice = buildAdvice(config);
                 // 实现了拦截
                 ((Advised) bean).addAdvice(advice);
             } catch (Exception e) {
-                throw new RuntimeException("安装失败", e);
+                LOGGER.info("Plugin [{}] enable failed.", config.getName());
+                throw new RuntimeException(String.format("Plugin id [{%s}] enable failed.", id), e);
             }
         }
+        LOGGER.info("Plugin [{}] enabled.", config.getName());
     }
 
+    /**
+     * 禁用插件
+     *
+     * @param id
+     */
     public void disablePlugin(String id) {
         if (!pluginCache.containsKey(id)) {
-            throw new RuntimeException(String.format("指定插件不存在 id=%s", id));
+            throw new RuntimeException(String.format("Plugin id [%s] not found. ", id));
         }
         Plugin config = pluginCache.get(id);
         // 设置为不生效,页面也不显示
         config.setEnabled(false);
+        // 所有被指定Advice(Plugin)增强的Bean都需要卸载该Advice(Plugin)
         for (String name : applicationContext.getBeanDefinitionNames()) {
             Object bean = applicationContext.getBean(name);
             if (bean instanceof Advised) {
+                // 这里返回的Advice就是我们的Plugin
                 Advice advice = findAdvice((Advised) bean, config.getClassName());
                 if (advice != null) {
+                    // 将Advice从被代理的Bean中删除
                     ((Advised) bean).removeAdvice(advice);
                 }
             }
         }
+        LOGGER.info("Plugin [{}] disabled.", config.getName());
     }
 
     /**
-     * 查切面
+     * 从被增强的bean绑定的切面们中找到指定的Advice(Plugin)
      *
-     * @param advised
-     * @param className
+     * @param advised   被增强的bean
+     * @param className Advice(Plugin)类的全路径
      * @return
      */
     private Advice findAdvice(Advised advised, String className) {
@@ -141,11 +153,17 @@ public class DefaultPluginFactory implements ApplicationContextAware {
         return adviceCache.get(adviceClass.getName());
     }
 
-
+    /**
+     * 刷新插件配置
+     *
+     * @return
+     * @throws IOException
+     */
     public List<Plugin> flushConfigs() throws IOException {
         File file = new File(configPath);
         String configJson = FileUtil.readUtf8String(file);
-        List<Plugin> fileConfigs = GSON.fromJson(configJson, new TypeToken<List<Plugin>>(){}.getType());
+        List<Plugin> fileConfigs = GSON.fromJson(configJson, new TypeToken<List<Plugin>>() {
+        }.getType());
         for (Plugin plugin : fileConfigs) {
             // 添加缓存
             if (pluginCache.get(plugin.getId()) == null) {

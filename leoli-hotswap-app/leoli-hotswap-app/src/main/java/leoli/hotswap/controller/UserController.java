@@ -16,11 +16,8 @@ import java.util.List;
 @RequestMapping("user")
 public class UserController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
-
     @RequestMapping("list")
     public List<String> list() {
-        LOGGER.info("Web call: /user/list.");
         return Arrays.asList(new String[]{"Leo", "Candy"});
     }
 

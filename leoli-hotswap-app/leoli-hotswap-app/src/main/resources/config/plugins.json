@@ -1,6 +1,6 @@
 [
   {
-    "enabled": false,
+    "enabled": true,
     "className": "leoli.hotswap.plugin.LogRestCallPlugin",
     "id": "1",
     "jarRemoteUrl": "../lib/leoli-hotswap-plugin-1.0-SNAPSHOT.jar",
