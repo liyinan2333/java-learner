@@ -27,7 +27,7 @@
 	
 	
 	<!-- 服务的实现 -->
-	<bean id="userServiceImpl01" class="UserServiceImpl"></bean>
+	<bean id="userServiceImpl01" class="leoli.boot.user.app.service.impl.UserServiceImpl"></bean>
 	
 	
 	<!-- 连接监控中心 -->
