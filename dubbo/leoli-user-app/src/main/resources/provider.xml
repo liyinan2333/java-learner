@@ -10,7 +10,7 @@
 	<dubbo:application name="leoli-user-app"></dubbo:application>
 	
 	<!-- 2、指定注册中心的位置 -->
-	<!-- <dubbo:registry address="zookeeper://127.0.0.1:2181"></dubbo:registry> -->
+<!--	 <dubbo:registry address="zookeeper://127.0.0.1:2181"></dubbo:registry>-->
 	<dubbo:registry protocol="zookeeper" address="127.0.0.1:2181"></dubbo:registry>
 	
 	<!-- 3、指定通信规则（通信协议？通信端口） -->
