@@ -1,4 +1,4 @@
-package leoli.lock;
+package leoli.multithreading.lock;
 
 /**
  * Synchronized和ReentrantLock的区别

@@ -1,4 +1,4 @@
-package leoli.thread;
+package leoli.multithreading.thread;
 
 /**
  * 多次start一个线程会怎么样？

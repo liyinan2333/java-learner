@@ -1,4 +1,4 @@
-package leoli.poll;
+package leoli.multithreading.poll;
 
 import java.util.concurrent.Executors;
 

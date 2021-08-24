@@ -1,4 +1,4 @@
-package leoli.use;
+package leoli.multithreading.use;
 
 import java.util.concurrent.Executors;
 import java.util.concurrent.locks.Lock;
@@ -30,8 +30,8 @@ import java.util.concurrent.locks.ReentrantLock;
  *         at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireQueued(java.base@11.0.10/AbstractQueuedSynchronizer.java:917)
  *         at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire(java.base@11.0.10/AbstractQueuedSynchronizer.java:1240)
  *         at java.util.concurrent.locks.ReentrantLock.lock(java.base@11.0.10/ReentrantLock.java:267)
- *         at leoli.use.DeadLockDemo.lambda$main$0(DeadLockDemo.java:29)
- *         at leoli.use.DeadLockDemo$$Lambda$14/0x0000000100066840.run(Unknown Source)
+ *         at leoli.multithreading.use.DeadLockDemo.lambda$main$0(DeadLockDemo.java:29)
+ *         at leoli.multithreading.use.DeadLockDemo$$Lambda$14/0x0000000100066840.run(Unknown Source)
  *         at java.lang.Thread.run(java.base@11.0.10/Thread.java:834)
  * "Thread-1":
  *         at jdk.internal.misc.Unsafe.park(java.base@11.0.10/Native Method)
@@ -41,8 +41,8 @@ import java.util.concurrent.locks.ReentrantLock;
  *         at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquireQueued(java.base@11.0.10/AbstractQueuedSynchronizer.java:917)
  *         at java.util.concurrent.locks.AbstractQueuedSynchronizer.acquire(java.base@11.0.10/AbstractQueuedSynchronizer.java:1240)
  *         at java.util.concurrent.locks.ReentrantLock.lock(java.base@11.0.10/ReentrantLock.java:267)
- *         at leoli.use.DeadLockDemo.lambda$main$1(DeadLockDemo.java:36)
- *         at leoli.use.DeadLockDemo$$Lambda$15/0x0000000100066c40.run(Unknown Source)
+ *         at leoli.multithreading.use.DeadLockDemo.lambda$main$1(DeadLockDemo.java:36)
+ *         at leoli.multithreading.use.DeadLockDemo$$Lambda$15/0x0000000100066c40.run(Unknown Source)
  *         at java.lang.Thread.run(java.base@11.0.10/Thread.java:834)
  *
  * Found 1 deadlock.

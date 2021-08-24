@@ -1,4 +1,4 @@
-package leoli.use;
+package leoli.multithreading.use;
 
 import java.util.concurrent.ArrayBlockingQueue;
 
