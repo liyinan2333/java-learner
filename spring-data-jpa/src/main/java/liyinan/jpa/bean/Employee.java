@@ -5,13 +5,12 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.Instant;
 
-@Getter
-@Setter
+@Data
 @Builder
-@ToString
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "java-learner.employee")
+@Table(name = "employee")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,5 +26,8 @@ public class Employee {
     @Convert(disableConversion = true)
     @Column(name = "birthday")
     private Instant birthday;
+
+    @Column(name = "del_tag")
+    private Boolean delTag;
 
 }
