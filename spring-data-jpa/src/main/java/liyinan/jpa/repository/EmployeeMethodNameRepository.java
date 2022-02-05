@@ -2,14 +2,10 @@ package liyinan.jpa.repository;
 
 
 import liyinan.jpa.bean.Employee;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.Repository;
-import org.springframework.data.repository.RepositoryDefinition;
 
 import java.time.Instant;
 import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
 
 /**
  * 注解或继承二选一
@@ -20,43 +16,44 @@ import java.util.Optional;
 //@RepositoryDefinition(domainClass = Employee.class, idClass = Integer.class)
 public interface EmployeeMethodNameRepository extends Repository<Employee, Integer> {
 
-    Optional<Employee> findByNameAndAge(String name, Integer age);
+//    Optional<Employee> findByNameAndAge(String name, Integer age);
+Collection<Employee> findByNameAndAge(String name, Integer age);
 
-    Employee findByNameOrAge(String name, Integer age);
+    Collection<Employee> findByNameOrAge(String name, Integer age);
 
-    Employee findByAgeBetween(Integer start, Integer end);
+    Collection<Employee> findByAgeBetween(Integer start, Integer end);
 
     Collection<Employee> findByAgeLessThan(Integer age);
 
-    Employee findByAgeGreaterThan(Integer age);
+    Collection<Employee> findByAgeGreaterThan(Integer age);
 
-    Employee findByBirthdayAfter(Instant birthday);
+    Collection<Employee> findByBirthdayAfter(Instant birthday);
 
-    Employee findByBirthdayBefore(Instant birthday);
+    Collection<Employee> findByBirthdayBefore(Instant birthday);
 
-    Employee findByAgeIsNull();
+    Collection<Employee> findByAgeIsNull();
 
-    Employee findByAgeNotNull();
+    Collection<Employee> findByAgeNotNull();
 //    Employee findByAgeIsNotNull();
 
-    Employee findByNameLike(String pattern);
+    Collection<Employee> findByNameLike(String pattern);
 
-    Employee findByNameNotLike(String pattern);
+    Collection<Employee> findByNameNotLike(String pattern);
 
-    Employee findByNameStartingWith(String starting);
+    Collection<Employee> findByNameStartingWith(String starting);
 
-    Employee findByNameEndingWith(String ending);
+    Collection<Employee> findByNameEndingWith(String ending);
 
-    Employee findByNameContaining(String contains);
+    Collection<Employee> findByNameContaining(String contains);
 
-    Employee findByAgeOrderByBirthday(Integer age);
+    Collection<Employee> findByAgeOrderByBirthday(Integer age);
 
-    Employee findByAgeNot(Integer age);
+    Collection<Employee> findByAgeNot(Integer age);
 
-    Employee findByAgeNotIn(Collection ages);
+    Collection<Employee> findByAgeNotIn(Collection ages);
 
-    Employee findByDelTagTrue();
+    Collection<Employee> findByDelTagTrue();
 
-    Employee findByDelTagFalse();
+    Collection<Employee> findByDelTagFalse();
 
 }
