@@ -56,4 +56,6 @@ Collection<Employee> findByNameAndAge(String name, Integer age);
 
     Collection<Employee> findByDelTagFalse();
 
+    Collection<Employee> findByNameStartingWithAndAgeLessThan(String name, Integer age);
+
 }

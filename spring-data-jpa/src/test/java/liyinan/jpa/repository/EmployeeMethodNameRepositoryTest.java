@@ -160,4 +160,11 @@ class EmployeeMethodNameRepositoryTest {
         Collection<Employee> employees = repository.findByDelTagFalse();
         employees.forEach(System.out::println);
     }
+
+    @ParameterizedTest
+    @CsvSource({"test1, 30"})
+    void findByNameStartingWithAndAgeLessThan(String name, Integer age) {
+        Collection<Employee> employees = repository.findByNameStartingWithAndAgeLessThan(name, age);
+        employees.forEach(System.out::println);
+    }
 }
