@@ -1,6 +1,6 @@
-use 'java-learner';
+use `java-learner`;
 
-drop table `java-learner`.employee
+drop table if exists `java-learner`.employee;
 
 create table `java-learner`.employee
 (
