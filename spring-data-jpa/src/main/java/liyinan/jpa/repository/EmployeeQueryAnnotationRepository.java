@@ -33,6 +33,7 @@ public interface EmployeeQueryAnnotationRepository extends Repository<Employee, 
     @Query("select o from Employee o where o.name like %:name%")
     List<Employee> findLike2(@Param("name") String name);
 
+    // nativeQuery=true 启用原生sql支持
     @Query(nativeQuery = true, value = "select count(1) from employee")
     Integer getCount();
 }
