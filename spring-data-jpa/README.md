@@ -22,3 +22,8 @@
 | True              | findByActiveTrue()              | where x.active = true                                      |
 | False             | findByActiveFalse()             | where x.active = false                                     |
 
+### 默认接口继承关系
+Repository
+CrudRepository
+PagingAndSortingRepository
+JpaRepository
