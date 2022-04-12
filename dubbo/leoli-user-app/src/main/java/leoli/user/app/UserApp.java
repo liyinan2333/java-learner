@@ -7,8 +7,8 @@ import java.io.IOException;
 public class UserApp {
 	
 	public static void main(String[] args) throws IOException {
-		ClassPathXmlApplicationContext ioc = new ClassPathXmlApplicationContext("provider.xml");
-		ioc.start();
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("provider.xml");
+		context.start();
 		
 		System.in.read();
 	}

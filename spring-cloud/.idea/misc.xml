@@ -7,9 +7,8 @@
       </list>
     </option>
   </component>
-  <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/microservicecloud-consumer-dept-feign-config/.classpath" />
-    <file url="file://$PROJECT_DIR$/microservicecloud-consumer-dept-feign-config/.project" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="corretto-1.8" project-jdk-type="JavaSDK" />
+  <component name="ProjectType">
+    <option name="id" value="jpab" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK" />
 </project>

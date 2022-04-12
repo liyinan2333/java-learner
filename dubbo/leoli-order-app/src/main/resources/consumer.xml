@@ -11,7 +11,7 @@
 
 	<dubbo:application name="leoli-order-app"></dubbo:application>
 	
-	<dubbo:registry address="zookeeper://127.0.0.1:2181"></dubbo:registry>
+	<dubbo:registry address="zookeeper://127.0.0.1:2181?backup=127.0.0.1:2182,127.0.0.1:2183"></dubbo:registry>
 	
 	<!--  配置本地存根-->
 	

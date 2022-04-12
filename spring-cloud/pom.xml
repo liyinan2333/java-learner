@@ -79,9 +79,10 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
 				<configuration>
-					<delimiters>
-						<delimit>$</delimit>
-					</delimiters>
+					<!--不知道为什么配了使用$xxx$占位符没生效，其实使用默认的${}即可-->
+<!--					<delimiters>-->
+<!--						<delimit>$</delimit>-->
+<!--					</delimiters>-->
 				</configuration>
 			</plugin>
 		</plugins>
