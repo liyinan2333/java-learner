@@ -8,4 +8,8 @@ spring:
     config:
       server:
         git:
-          uri: git@github.com:GarenMorbid/microservicecloud-config.git # GitHub上面的git仓库名字
+          # GitHub上面的git仓库名字
+          # uri: git@github.com:liyinan2333/microservicecloud-config.git
+          # username: xxx
+          # password: xxx
+          uri: https://github.com/liyinan2333/microservicecloud-config.git

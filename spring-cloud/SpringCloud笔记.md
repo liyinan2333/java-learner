@@ -218,7 +218,7 @@ spring:
     name: microservicecloud-dept   #为这个服务取名，非常重要！！！！！
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: org.gjt.mm.mysql.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/cloudDB01
     username: root
     password: 123456
@@ -1534,7 +1534,7 @@ spring:
     name: microservicecloud-dept   #为这个服务取名，非常重要！！！！！
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: org.gjt.mm.mysql.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://192.168.88.246:3306/cloudDB01
     username: root
     password: 123456
@@ -1565,7 +1565,7 @@ spring:
     name: microservicecloud-dept   #为这个服务取名，非常重要！！！！！
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: org.gjt.mm.mysql.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://192.168.88.246:3306/cloudDB02
     username: root
     password: 123456
