@@ -3,7 +3,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.atguigu</groupId>
 	<artifactId>spring-annotation</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <version>0.0.1-SNAPSHOT</version>
     <build>
         <plugins>
             <plugin>
@@ -16,6 +17,9 @@
             </plugin>
         </plugins>
     </build>
+    <modules>
+        <module>demo-annotation-enable</module>
+    </modules>
 
 
     <dependencies>
