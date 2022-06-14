@@ -3,10 +3,7 @@ package leoli.stream.api;
 import leoli.stream.api.bean.Person;
 import leoli.stream.api.bean.PersonCountry;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -14,14 +11,14 @@ public class StreamApiDemo {
 
     public static void main(String[] args) {
         List<Person> personList = new ArrayList<>();
-        personList.add(new Person("欧阳雪",18,"中国",'F'));
-        personList.add(new Person("Tom",24,"美国",'M'));
-        personList.add(new Person("Harley",22,"英国",'F'));
-        personList.add(new Person("向天笑",20,"中国",'M'));
-        personList.add(new Person("李康",22,"中国",'M'));
-        personList.add(new Person("小梅",20,"中国",'F'));
-        personList.add(new Person("何雪",21,"中国",'F'));
-        personList.add(new Person("李康",22,"中国",'M'));
+        personList.add(new Person("欧阳雪", 18, "中国", 'F'));
+        personList.add(new Person("Tom", 24, "美国", 'M'));
+        personList.add(new Person("Harley", 22, "英国", 'F'));
+        personList.add(new Person("向天笑", 20, "中国", 'M'));
+        personList.add(new Person("李康", 22, "中国", 'M'));
+        personList.add(new Person("小梅", 20, "中国", 'F'));
+        personList.add(new Person("何雪", 21, "中国", 'F'));
+        personList.add(new Person("李康", 22, "中国", 'M'));
 
         // 1）找到年龄大于18岁的人并输出；
         System.out.println("找到年龄大于18岁的人并输出 -> ");
@@ -60,7 +57,7 @@ public class StreamApiDemo {
 
         // map2
         System.out.println("map2 -> ");
-        List<String> list = Arrays.asList("aaa","bbb","ccc","ddd","ddd");
+        List<String> list = Arrays.asList("aaa", "bbb", "ccc", "ddd", "ddd");
 
         final Stream<Stream<Character>> streamStream
                 = list.stream().map(StreamApiDemo::getCharacterByString);
@@ -109,7 +106,7 @@ public class StreamApiDemo {
         // reduce
         System.out.println("reduce -> ");
         List<Integer> integerList = new ArrayList<>(100);
-        for(int i = 1;i <= 100;i++) {
+        for (int i = 1; i <= 100; i++) {
             integerList.add(i);
         }
         final Integer reduce = integerList.stream().reduce(0, (x, y) -> x + y);
@@ -130,11 +127,17 @@ public class StreamApiDemo {
         final Optional<Integer> maxAge2 = personList.stream().map(Person::getAge).collect(Collectors.maxBy(Integer::compareTo));
         System.out.println(maxAge2.get());
 
-        try(final Stream<Integer> integerStream = personList.stream().map(Person::getAge)) {
+        try (final Stream<Integer> integerStream = personList.stream().map(Person::getAge)) {
             final Optional<Integer> minAge2 = integerStream.collect(Collectors.minBy(Integer::compareTo));
             System.out.println(minAge2.get());
         }
-        System.out.println("--------------------------------------------------------------------------------------");
+        System.out.println("-----------------unlimited streaming-------------------");
+
+        // unlimited streaming
+        Stream<UUID> generate = Stream.generate(UUID::randomUUID);
+        generate.limit(3).forEach(System.out::println);
+        Stream<Integer> iterator = Stream.iterate(0, x -> x + 1);
+        iterator.skip(1).limit(3).forEach(System.out::println);
     }
 
     public static Stream<Character> getCharacterByString(String str) {
