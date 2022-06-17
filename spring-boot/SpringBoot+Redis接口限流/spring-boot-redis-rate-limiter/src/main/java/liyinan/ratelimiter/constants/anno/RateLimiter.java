@@ -1,4 +1,4 @@
-package liyinan.ratelimiter.anno;
+package liyinan.ratelimiter.constants.anno;
 
 import liyinan.ratelimiter.constants.LimitType;
 
