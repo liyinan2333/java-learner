@@ -17,7 +17,8 @@ import java.util.Date;
  * @author: liyinan2333
  * @date: 2022/06/14
  */
-@RestController("test")
+@RestController
+@RequestMapping("test")
 public class TestController {
 
     @Autowired
@@ -25,7 +26,7 @@ public class TestController {
 
     @GetMapping("/limit")
     @RateLimiter(time = 5,count = 3,limitType = LimitType.IP)
-    public String hello() {
+    public String limit() {
         return ">>>"+new Date();
     }
 
@@ -39,7 +40,6 @@ public class TestController {
 
     @RequestMapping("get")
     public ResponseEntity get(@RequestParam String key) {
-        Assert.notNull(key, "Key is null");
         return ResponseEntity.ok(redisTemplate.opsForValue().get(key));
     }
 
