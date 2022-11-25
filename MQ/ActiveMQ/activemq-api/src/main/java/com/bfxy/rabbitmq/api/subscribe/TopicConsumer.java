@@ -1,4 +1,4 @@
-package com.bfxy.rabbitmq.api.persistence;
+package com.bfxy.rabbitmq.api.subscribe;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 
@@ -19,6 +19,15 @@ public class TopicConsumer {
         Topic topic = session.createTopic(TOPIC_ID);
         TopicSubscriber topicSubscriber = session.createDurableSubscriber(topic, "remark...");
 
-
+        topicSubscriber.setMessageListener((message) -> {
+            if (message != null && message instanceof TextMessage) {
+                try {
+                    TextMessage textMessage = (TextMessage) message;
+                    System.out.println(">i> " + textMessage.getJMSDestination() + " " + textMessage.getJMSMessageID() + " context->" + textMessage.getText());
+                } catch (JMSException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
     }
 }
