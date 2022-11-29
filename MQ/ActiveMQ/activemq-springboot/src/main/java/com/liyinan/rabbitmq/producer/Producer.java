@@ -1,6 +1,6 @@
 package com.liyinan.rabbitmq.producer;
 
-import com.liyinan.rabbitmq.config.QueueConfig;
+import com.liyinan.rabbitmq.config.DestinationConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -22,11 +22,11 @@ public class Producer {
     JmsTemplate jmsTemplate;
 
     @Autowired
-    @Qualifier(QueueConfig.QUEUE_ID)
+    @Qualifier(DestinationConfig.QUEUE_ID)
     Queue queue;
 
     @Autowired
-    @Qualifier(QueueConfig.TOPIC_ID)
+    @Qualifier(DestinationConfig.TOPIC_ID)
     Topic topic;
 
     @RequestMapping("queue")
