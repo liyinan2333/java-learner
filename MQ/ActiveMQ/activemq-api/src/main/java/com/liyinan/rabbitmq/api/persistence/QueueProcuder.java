@@ -1,4 +1,4 @@
-package com.bfxy.rabbitmq.api.persistence;
+package com.liyinan.rabbitmq.api.persistence;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 

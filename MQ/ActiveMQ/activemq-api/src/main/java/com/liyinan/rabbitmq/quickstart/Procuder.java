@@ -1,4 +1,4 @@
-package com.bfxy.rabbitmq.quickstart;
+package com.liyinan.rabbitmq.quickstart;
 
 import cn.hutool.json.JSONUtil;
 import org.apache.activemq.ActiveMQConnectionFactory;

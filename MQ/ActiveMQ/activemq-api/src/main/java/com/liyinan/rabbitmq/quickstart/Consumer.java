@@ -1,4 +1,4 @@
-package com.bfxy.rabbitmq.quickstart;
+package com.liyinan.rabbitmq.quickstart;
 
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.json.JSONUtil;

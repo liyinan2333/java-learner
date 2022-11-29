@@ -1,4 +1,4 @@
-package com.bfxy.rabbitmq.api.subscribe;
+package com.liyinan.rabbitmq.api.subscribe;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
 
