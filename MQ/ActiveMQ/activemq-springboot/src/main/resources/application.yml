@@ -1,3 +1,0 @@
-spring:
-  activemq:
-    brokerUrl: tcp://localhost:61616

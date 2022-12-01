@@ -1,0 +1,12 @@
+server:
+  port: 8888
+spring:
+  activemq:
+    brokerUrl: nio://localhost:61618
+    user: admin
+    password: admin
+  jms:
+    # false-Queue; true-Topic; 默认就是false
+    # 注意，这样配置只能接收Queue或Topic中的一种，解决方案是自己定义JmsContainerFactory
+    # 详见com.liyinan.activemq.config.JmsListenerConfig
+    # pub-sub-domain: true

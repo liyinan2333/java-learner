@@ -1,0 +1,7 @@
+server:
+  port: 7777
+spring:
+  activemq:
+    brokerUrl: nio://localhost:61618
+    user: admin
+    password: admin

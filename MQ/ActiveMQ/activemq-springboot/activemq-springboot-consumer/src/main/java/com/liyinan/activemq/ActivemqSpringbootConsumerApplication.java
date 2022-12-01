@@ -1,12 +1,12 @@
-package com.liyinan.rabbitmq;
+package com.liyinan.activemq;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Application {
+public class ActivemqSpringbootConsumerApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(ActivemqSpringbootConsumerApplication.class, args);
     }
 }
