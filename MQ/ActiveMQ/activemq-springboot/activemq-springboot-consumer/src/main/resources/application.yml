@@ -2,7 +2,7 @@ server:
   port: 8888
 spring:
   activemq:
-    brokerUrl: nio://localhost:61618
+    brokerUrl: failover:(nio://localhost:61616,nio://localhost:61617,nio://localhost:61618)
     user: admin
     password: admin
   jms:
