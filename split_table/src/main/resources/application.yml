@@ -1,0 +1,16 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/test_split_table?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=false
+#    driver-class-name: org.apache.ibatis.datasource.unpooled.UnpooledDataSource.DriverProxy
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+#整合mybatis
+#给pojo实体类起别名
+mybatis:
+  type-aliases-package: liyinan.split.table.pojo
+#接口的配置文件的位置
+  mapper-locations: classpath:mapper/*.xml
