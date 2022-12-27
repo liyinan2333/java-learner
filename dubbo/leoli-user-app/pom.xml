@@ -8,7 +8,7 @@
 	<properties>
 		<maven.compiler.source>11</maven.compiler.source>
 		<maven.compiler.target>11</maven.compiler.target>
-		<dubbo.version>2.6.9</dubbo.version>
+		<dubbo.version>2.6.12</dubbo.version>
 	</properties>
 
 	<dependencies>
